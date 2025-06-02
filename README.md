@@ -54,10 +54,10 @@ For an explanation valuation and modelling  of power swaps and related derivativ
 - Who can market make options?
 - PPAs (Power Purchase Agreements) / VPPAS(virtual Power  Purchase Agreements) renewables/hedging.
 
-## EUPHEMIA Simulation (Python)
+## EUPHEMIA Simulation (Python) Work in Progress
 
-This repository includes a simplified Python-based simulation to illustrate some core concepts of EUPHEMIA.
-Navigate to the [euphemia_simulation directory](./euphemia_simulation/README.md) for more details and to run the simulation.
+This repo has a super simplified Python-based simulation to show some core concepts of EUPHEMIA.
+[euphemia_simulation directory](./euphemia_simulation/README.md) to see more.
 
 ## Further Reading and Resources
 
