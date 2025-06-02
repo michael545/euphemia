@@ -47,7 +47,7 @@ This repo is designed as a study guide for students trying to understand the EUP
 
 ## Swaps and Financial Instruments
 
-For an explanation valuation and modelling  of power swaps and related derivatives like VPPAs, see [swaps_explained.md](./swaps_explained.md).
+For an explanation valuation and modelling  of power swaps and related derivatives like VPPAs, see [swaps_explained.md](./power_derivatives/swaps_explained.md).
 
 - How much vol needs to be hedged, how much vol is pure speculation/counter trading?
 - Are swaps common? Who buys options? Who writes contracts for these swaps(fixed for floating) How liquid are they?
@@ -90,10 +90,11 @@ RAM (Remaining Available Margin): This represents the number of MW available for
 
 ACER -Eropean Union Agency for the Cooperation of Energy Regulators (ACER) holdin ELES by their balls 
 
- Single Intraday Coupling (SIDC) 1h ahead auctions
+Single Intraday Coupling (SIDC) 1h ahead auctions
 
 
-How much vol does really need to be hedgedd, are swaps common? who buys options, how liquid are they who can market make options, 
+How much vol does really need to be hedgedd, are swaps common? who buys options, how liquid are they who can market make 
+them how does ECC model default risk, 
 PPAs (power purchase agreements ) related to renewable projects, more outdated expirys by the exchanges
 
 ENTSO-E (European Network of Transmission System Operators for Electricity)
