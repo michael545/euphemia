@@ -1,8 +1,8 @@
 # Main EUPHEMIA Simulation Runner
+from core.cost_optimization import MarketClearing
+from core.grid_simulation import Grid
+from order_types.standard_orders import LimitOrder, MarketOrder
 
-from euphemia_simulation.order_types.standard_orders import MarketOrder, LimitOrder
-from euphemia_simulation.core.grid_simulation import Grid
-from euphemia_simulation.core.cost_optimization import MarketClearing
 
 if __name__ == "__main__":
     print("Starting EUPHEMIA Simulation Example...")
