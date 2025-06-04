@@ -1,5 +1,4 @@
-# Grid Simulation
-
+# Grid SIMulation 
 class Grid:
     def __init__(self, nodes, lines):
         self.nodes = nodes # List of market areas or bidding zones

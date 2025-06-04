@@ -18,7 +18,7 @@ This repo is designed as a study guide for students trying to understand the EUP
 - EUPHEMIA: Pan-European Hybrid Electricity Market Integration Algorithm
 - Implemented in FEB 2014 following COSMOS/SESAME (Cross-border Optimisation of SMOS)
 - Aims for transparency in the computation of prices and flows.
-- Solves a complex optimization problem (typically MIQP - Mixed Integer Quadratic Programming) to achieve market coupling.
+- Solves a complex optimization problem (usually MIQP - Mixed Integer Quadratic Programming) to achieve market coupling.
 
 ## Key Concepts
 
