@@ -5,7 +5,7 @@ from order_types.standard_orders import LimitOrder, MarketOrder
 
 
 if __name__ == "__main__":
-    print("Starting EUPHEMIA Simulation Example...")
+    print("EUPHEMIA SIM Example...")
 
     # 1. Define the Grid
     # Example: 2 nodes (Market Areas) and 1 transmission line between them
