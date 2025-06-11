@@ -78,8 +78,7 @@ class MeritOrder(StepOrder):
 
     def __str__(self):
         return f"MeritOrder ID: {self.order_id}, Zone: {self.bidding_zone}, Side: {self.side}, Price: {self.price}, MON: {self.merit_order_number}"
-
-
+# 2.7. PUNOrder (Discontinued)
 '''
 used to be relevant for the Italian market, but nnow since Jan 2025 it's dicontinued "Prezzo Unico Nazionale" PUN
 '''
