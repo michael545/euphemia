@@ -1,9 +1,7 @@
 # Main EUPHEMIA Simulation Runner
 from core.cost_optimization import MarketClearing
-from core.grid_simulation import Grid
-# Assuming you have StepOrder, PiecewiseLinearOrder, BlockOrder, etc. defined in standard_orders
+from core.grid_class import Grid
 from order_types.standard_orders import StepOrder, PiecewiseLinearOrder, BlockOrder, MeritOrder, PUNOrder, ComplexOrder, ScalableComplexOrder
-
 
 if __name__ == "__main__":
     print("EUPHEMIA entry running...")
