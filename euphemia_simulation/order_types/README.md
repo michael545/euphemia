@@ -77,7 +77,7 @@ These are more sophisticated orders, often representing complex generation units
 
 ### 4. Merit Orders
 
-These are special types of orders used for tie-breaking or ranking.
+These are special, used for tie-breaking or ranking.
 
 #### `MeritOrder(StepOrder)`
 -   **Purpose**: Represents special step orders used for ranking, particularly when multiple orders are "at-the-money" (i.e., their price is equal to the clearing price).
@@ -87,7 +87,7 @@ These are special types of orders used for tie-breaking or ranking.
 ### Discontinued Orders
 
 #### `PUNOrder(MeritOrder)`
--   **Note**: This order type, previously relevant for the Italian market ("Prezzo Unico Nazionale"), was discontinued as of January 2025. It was a special type of demand merit order cleared at a national PUN price.
+-   **Note**: USED to be relevant for the Italian market ("Prezzo Unico Nazionale"), was discontinued as JAN 2025. Was a special type of demand merit order cleared at a national PUN price.
 
-This structure provides a flexible way to model a variety of bids and offers that might be encountered in the EUPHEMIA algorithm.
+This structure provides a flexible way to model a variety of bids and offers that come as the inputs to the EUPHEMIA algorithm.
 
