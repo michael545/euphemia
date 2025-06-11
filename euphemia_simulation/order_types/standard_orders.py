@@ -49,11 +49,11 @@ class ComplexOrder(Order):
         # MIC/MP Condition Attributes
         self.fixed_term = fixed_term # Fixed cost/payment component in Euros
         self.variable_term = variable_term # Variable cost/payment component in €/MW per accepted unit
-        # Load Gradient Attributes
+        # Load gradient changes 
         self.increase_gradient = increase_gradient # Max allowed increase in matched volume period to period
         self.decrease_gradient = decrease_gradient # Max allowed decrease in matched volume period to period
         # Scheduled Stop Attributes
-        self.scheduled_stop_periods = scheduled_stop_periods if scheduled_stop_periods else [] # List of periods for soft shutdown
+        self.scheduled_stop_periods = scheduled_stop_periods if scheduled_stop_periods else [] # array of periods for shutdown
 
     def __str__(self):
         return f"ComplexOrder ID: {self.order_id}, Zone: {self.bidding_zone}, Side: {self.side}, SubOrders: {len(self.sub_orders)}, FixedTerm: {self.fixed_term}"
@@ -69,7 +69,7 @@ class ScalableComplexOrder(ComplexOrder):
     def __str__(self):
         return f"ScalableComplexOrder ID: {self.order_id}, Zone: {self.bidding_zone}, Side: {self.side}, SubOrders: {len(self.sub_orders)}, FixedTerm: {self.fixed_term}"
 
-# 2.6. Merit and PUN Orders
+# 2.6. Merit Orders
 class MeritOrder(StepOrder):
     """Special step orders used for ranking."""
     def __init__(self, order_id, bidding_zone, side, price, quantity, period, merit_order_number):
@@ -79,13 +79,17 @@ class MeritOrder(StepOrder):
     def __str__(self):
         return f"MeritOrder ID: {self.order_id}, Zone: {self.bidding_zone}, Side: {self.side}, Price: {self.price}, MON: {self.merit_order_number}"
 
-class PUNOrder(MeritOrder):
-    """A special type of demand merit order used in the Italian market."""
-    # Cleared at national PUN price instead of zonal price - this logic would be in the clearing algorithm.
-    def __init__(self, order_id, bidding_zone, side, price, quantity, period, merit_order_number):
-        super().__init__(order_id, bidding_zone, side, price, quantity, period, merit_order_number)
 
-    def __str__(self):
-        return f"PUNOrder ID: {self.order_id}, Zone: {self.bidding_zone}, Side: {self.side}, Price: {self.price}, MON: {self.merit_order_number}"
+'''
+used to be relevant for the Italian market, but nnow since Jan 2025 it's dicontinued "Prezzo Unico Nazionale" PUN
+'''
+# class PUNOrder(MeritOrder):
+#     """A special type of demand merit order used in the Italian market."""
+#     # Cleared at national PUN price instead of zonal price - this logic would be in the clearing algorithm.
+#     def __init__(self, order_id, bidding_zone, side, price, quantity, period, merit_order_number):
+#         super().__init__(order_id, bidding_zone, side, price, quantity, period, merit_order_number)
+
+#     def __str__(self):
+#         return f"PUNOrder ID: {self.order_id}, Zone: {self.bidding_zone}, Side: {self.side}, Price: {self.price}, MON: {self.merit_order_number}"
 
 print("Orders loads with no mistakes.") 

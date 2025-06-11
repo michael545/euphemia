@@ -7,8 +7,6 @@ from order_types.standard_orders import LimitOrder, MarketOrder
 if __name__ == "__main__":
     print("EUPHEMIA SIM Example...")
 
-    # 1. Define the Grid
-    # Example: 2 nodes (Market Areas) and 1 transmission line between them
     nodes = ["Area1", "Area2"]
     lines = [{"from": "Area1", "to": "Area2", "capacity": 100}] # 100 MW capacity
     grid = Grid(nodes, lines)
