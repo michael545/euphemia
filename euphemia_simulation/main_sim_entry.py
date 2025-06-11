@@ -1,7 +1,9 @@
 # Main EUPHEMIA Simulation Runner
 from core.cost_optimization import MarketClearing
 from core.grid_class import Grid
-from order_types.standard_orders import StepOrder, PiecewiseLinearOrder, BlockOrder, MeritOrder, PUNOrder, ComplexOrder, ScalableComplexOrder
+from order_types.standard_orders import StepOrder, PiecewiseLinearOrder, BlockOrder, MeritOrder, ComplexOrder, ScalableComplexOrder
+from visualizing_grid import generate_grid_visualization # Import the visualization function
+
 
 if __name__ == "__main__":
     print("EUPHEMIA entry running...")
@@ -11,11 +13,11 @@ if __name__ == "__main__":
     print(f"Bidding zones defined: {bidding_zones}")
 
     # 2. Define Interconnectors
-    # Each interconnector is a dictionary specifying its properties.
+    # Each inteconetc is dictionary specifying with the properties that define coupling, capacity, voltage.
     # 'id' is a unique  line itself.
     # 'coupling_model' can be 'ATC' or 'FlowBased'.
     # 'capacity_mw' is used for ATC.
-    # For FlowBased, you'd typically have Critical Network Elements (CNEs) and their PTDFs/RAM, which is more complex.
+    # For FlowBased, is kinda complex as you have Critical Network Elements (CNEs) and their PTDFs/RAM, which is hard to implement.
     interconnectors = [
         # Slovenia (SI) - Austria (AT)
         {"id": "SI-AT-400kv-1", "from_zone": "SI", "to_zone": "AT", "capacity_mw": 500, "coupling_model": "ATC", "voltage_kv": 400},
@@ -35,28 +37,31 @@ if __name__ == "__main__":
         {"id": "SI-HR-220kv-1", "from_zone": "SI", "to_zone": "HR", "capacity_mw": 200, "coupling_model": "ATC", "voltage_kv": 220},
 
         # (AT) - Italy (IT)
-        # SI-IT
         {"id": "AT-IT-400kv-1", "from_zone": "AT", "to_zone": "IT", "capacity_mw": 700, "coupling_model": "FlowBased", "voltage_kv": 400},
 
         # super simple for now, the model is focused on SI and neighbors + AT-IT .
         {"id": "AT-HU-400kv-1", "from_zone": "AT", "to_zone": "HU", "capacity_mw": 500, "coupling_model": "ATC", "voltage_kv": 400},
-        {"id": "IT-HR-DC-1", "from_zone": "IT", "to_zone": "HR", "capacity_mw": 200, "coupling_model": "ATC", "voltage_kv": 0}, # Example DC link
+        {"id": "IT-HR-DC-1", "from_zone": "IT", "to_zone": "HR", "capacity_mw": 200, "coupling_model": "ATC", "voltage_kv": 10000}, # Seabed DC link
 
     ]
     print(f"Interconnectors defined: {len(interconnectors)}")
 
-    # 3. Initialize Grid
+    # 3.grid init
     grid = Grid(bidding_zones, interconnectors)
     print(f"Grid initialized with {len(grid.bidding_zones)} zones and {len(grid.interconnectors)} interconnectors.")
 
-    # 4. Create some dummy orders
-    # (Using StepOrder as an example, replace with other types as needed)
+    # Call the visualization function after grid initialization
+    print("Generating grid visualization from main_sim_entry.py...")
+    generate_grid_visualization(bidding_zones, interconnectors, output_filename="euphemia_grid_from_main")
+
+    # 4. dummy orders
+    # (just needed)
     orders = [
         StepOrder(order_id="B_SI_001", bidding_zone="SI", side="buy", price=50, quantity=100, period=1),
         StepOrder(order_id="S_SI_001", bidding_zone="SI", side="sell", price=45, quantity=80, period=1),
         StepOrder(order_id="B_AT_001", bidding_zone="AT", side="buy", price=55, quantity=120, period=1),
         StepOrder(order_id="S_IT_001", bidding_zone="IT", side="sell", price=40, quantity=200, period=1),
-        # Add more orders for different zones and periods
+        # more for more testing coming
     ]
     print(f"Created {len(orders)} sample orders.")
 

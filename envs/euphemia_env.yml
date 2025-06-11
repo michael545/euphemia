@@ -1,0 +1,12 @@
+# euphemia_env.yml
+name: euphemia_env          # env name
+channels:
+  - defaults               # primary channel; could append others
+dependencies:
+  - python=3.12.7           # --version for consistency
+  - pip
+  - graphviz              # Graphviz binaries (e.g., dot, neato)
+  - python-graphviz       # Python bindings for Graphviz
+  - icu>=73.1             # pin to prevent unintentional downgrades
+  - ipython
+  - black
