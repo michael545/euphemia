@@ -1,6 +1,6 @@
-## Power Derivatives & Open Questions (Financial Instruments)
+## Power Derivatives & Open Questions 
 
-This section is about understanding the broader derivatives market for electricity:
+This is about understanding the broader derivatives market for electricity:
 - **Hedging Volume??:** How much vol. is really meant for hedging risk purposes vs. speculative or counter-trading (Citadel/2sigma) ?
 - **Swaps & Options:**
     - Are energy markets more efficient than traditional equities?
@@ -9,7 +9,7 @@ This section is about understanding the broader derivatives market for electrici
     - How are CFDs & fixed-for-floating swaps structured?
     - What is the liquidity picture like for these instruments?
     - Who are the main market makers for options?
-    - Who plays the game solely because of stat arbitrage and other inefficiencies
+    - Who plays the game solely because of stat arbitrage and inefficiencies
 - **Counterparty Risk:** How do clearing houses (e.g., ECC) model and manage default risk of participants?
 - **PPAs (Power Purchase Agreements):**
     - Often related to renewable energy projects.

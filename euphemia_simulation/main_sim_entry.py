@@ -1,5 +1,5 @@
 # Main EUPHEMIA Simulation Runner
-from core.cost_optimization import MarketClearing
+from euphemia_simulation.core.welfare_optimization import MarketClearing
 from core.grid_class import Grid
 from order_types.standard_orders import StepOrder, PiecewiseLinearOrder, BlockOrder, MeritOrder, ComplexOrder, ScalableComplexOrder
 from visualizing_grid import generate_grid_visualization # Import the visualization function
