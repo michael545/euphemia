@@ -18,7 +18,7 @@ This repo is designed as a study guide for students trying to understand the EUP
 - EUPHEMIA: Pan-European Hybrid Electricity Market Integration Algorithm
 - Implemented in FEB 2014 following COSMOS/SESAME (Cross-border Optimisation of SMOS)
 - Aims for transparency in the computation of prices and flows.
-- Solves a complex optimization problem (usually MIQP - Mixed Integer Quadratic Programming) to achieve market coupling.
+- Solves a complex optimization problem (usually MIQP - Mixed Integer Quadratic Problem) to achieve market coupling.
 
 ## Key Concepts/Definitions
 
@@ -98,6 +98,20 @@ This is a direct result of the executed orders in the market, not the algorithm 
     - REMIT (Regulation on Wholesale Energy Market Integrity and Transparency)
     These regulations are likely to continue shaping the market.
 
-## Refrences & Recommended Reading
-- ** **
-- ** **
+## References & Recommended Reading
+
+Here are two brillian, in-depth books that cover the EU electricity markets from two different perspectives.
+
+---
+
+* **Estermann, A., Schrade, M., & Anderson, L. (Eds.). (2025). *European Electricity Market Coupling: A Practitioner’s Guide*. [cite_start]Springer. **
+
+    [cite_start]This book is an essential **"how-to" manual** for understanding the operational and technical details of the modern European electricity market. [cite_start]As a practitioner's guide, it's perfect for new energy professionals, policymakers, and anyone looking for a deep dive into the specifics of market coupling. [cite_start]It covers everything from the day-to-day operations and algorithms  [cite_start]to the financial, legal, and regional aspects. [cite_start]A major advantage is that this book is **Open Access**, so it is available for everyone for free.
+
+    * [cite_start][Access the book via SpringerLink (DOI)](https://doi.org/10.1007/978-3-031-86315-8) 
+
+---
+
+* **Meeus, L. (2020). *The Evolution of Electricity Markets in Europe*. Edward Elgar Publishing.**
+
+    If the *Practitioner's Guide* is the "how-to," this book is the **"why."** It offers a brilliant overview of the historical development of Europe's electricity markets from the 1990s to the present day. It's a "one-stop-shop" for understanding the legislative packages, key court cases, and the economic principles that shaped the market design we see today. Highly recommended for anyone wanting to understand the full context and the journey of market integration form the ground up.

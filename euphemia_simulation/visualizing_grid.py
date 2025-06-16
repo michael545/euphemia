@@ -58,17 +58,15 @@ def generate_grid_visualization(bidding_zones, interconnectors, output_filename=
 
 
 if __name__ == "__main__":
-    # This block is now primarily for demonstrating standalone use or testing.
+
     # The main simulation will call generate_grid_visualization directly.
     print("visualizing_grid.py executed directly (for testing/example purposes).")
     print("To generate visualization from the main simulation, run main_sim_entry.py.")
     
-    # Example data for standalone testing (optional, can be removed if not needed)
-    # If you want to test visualize_grid.py independently, you can uncomment and use this:
     # print("Running standalone visualization with example data...")
     # example_zones = ["TestZone1", "TestZone2"]
     # example_ics = [
     #     {"id": "TZ1-TZ2-01", "from_zone": "TestZone1", "to_zone": "TestZone2", "capacity_mw": 100, "coupling_model": "ATC", "voltage_kv": 400}
     # ]
     # generate_grid_visualization(example_zones, example_ics, output_filename="standalone_test_grid")
-    pass # Or remove the __main__ block if no standalone execution is desired.
+    pass 

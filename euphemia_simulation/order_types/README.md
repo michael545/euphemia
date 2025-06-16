@@ -87,7 +87,7 @@ These are special, used for tie-breaking or ranking.
 ### Discontinued Orders
 
 #### `PUNOrder(MeritOrder)`
--   **Note**: USED to be relevant for the Italian market ("Prezzo Unico Nazionale"), was discontinued as JAN 2025. Was a special type of demand merit order cleared at a national PUN price.
+-   **Note**: USED to be relevant for the Italian market ("Prezzo Unico Nazionale"), was discontinued as JAN 2025. special type of demand merit order cleared at a national PUN price.
 
 This structure provides a flexible way to model a variety of bids and offers that come as the inputs to the EUPHEMIA algorithm.
 

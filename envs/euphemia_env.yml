@@ -1,12 +1,14 @@
 # euphemia_env.yml
-name: euphemia_env          # env name
+name: euphemia_env       
 channels:
-  - defaults               # primary channel; could append others
+  - defaults               # primary channel; could also use conda-forge
 dependencies:
   - python=3.12.7           # --version for consistency
   - pip
-  - graphviz              # Graphviz binaries (e.g., dot, neato)
+  - graphviz              # Graphviz binaries (dot, neato)
   - python-graphviz       # Python bindings for Graphviz
-  - icu>=73.1             # pin to prevent unintentional downgrades
+  - icu>=73.1             # prevent unintentional downgrades
   - ipython
   - black
+
+

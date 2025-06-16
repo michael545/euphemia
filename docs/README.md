@@ -1,3 +1,3 @@
 # EUPHEMIA Study Guide - Documentation
 
-This dir contains documentation and explanatory materials related to the EUPHEMIA algorithm and European electricity markets.
+Docs, Books and other explanatory materials related to the EUPHEMIA algorithm and European electricity markets.
