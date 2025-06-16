@@ -104,11 +104,11 @@ Here are two brillian, in-depth books that cover the EU electricity markets from
 
 ---
 
-* **Estermann, A., Schrade, M., & Anderson, L. (Eds.). (2025). *European Electricity Market Coupling: A Practitioner’s Guide*. [cite_start]Springer. **
+* **Estermann, A., Schrade, M., & Anderson, L. (Eds.). (2025). *European Electricity Market Coupling: A Practitioner’s Guide*. [1]Springer. **
 
-    [cite_start]This book is an essential **"how-to" manual** for understanding the operational and technical details of the modern European electricity market. [cite_start]As a practitioner's guide, it's perfect for new energy professionals, policymakers, and anyone looking for a deep dive into the specifics of market coupling. [cite_start]It covers everything from the day-to-day operations and algorithms  [cite_start]to the financial, legal, and regional aspects. [cite_start]A major advantage is that this book is **Open Access**, so it is available for everyone for free.
+    [1]This book is an essential **"how-to" manual** for understanding the operational and technical details of the modern European electricity market. [1]As a practitioner's guide, it's perfect for new energy professionals, policymakers, and anyone looking for a deep dive into the specifics of market coupling. [1]It covers everything from the day-to-day operations and algorithms  [1]to the financial, legal, and regional aspects. [1]A major advantage is that this book is **Open Access**, so it is available for everyone for free.
 
-    * [cite_start][Access the book via SpringerLink (DOI)](https://doi.org/10.1007/978-3-031-86315-8) 
+    * [link][Access the book via SpringerLink (DOI)](https://doi.org/10.1007/978-3-031-86315-8) 
 
 ---
 
