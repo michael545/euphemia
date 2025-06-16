@@ -4,7 +4,7 @@ from .base_order import Order
 class StepOrder(Order):
     """Represents a simple limit order."""
     def __init__(self, order_id, bidding_zone, side, price, quantity, period):
-        super().__init__(order_id, bidding_zone, side)
+        super().__init__(order_id, bidding_zone, side, period)
         self.price = price  # The limit price for the order (€/MWh)
         self.quantity = quantity  # The volume of the order (MWh)
         self.period = period  # The specific market time unit for which the order is valid
@@ -15,7 +15,7 @@ class StepOrder(Order):
 class PiecewiseLinearOrder(Order):
     """Represents an interpolated order that is accepted gradually over a price range."""
     def __init__(self, order_id, bidding_zone, side, price_start, price_end, quantity, period):
-        super().__init__(order_id, bidding_zone, side)
+        super().__init__(order_id, bidding_zone, side, period)
         self.price_start = price_start # The price at which the order starts to be accepted
         self.price_end = price_end # The price at which the order is fully accepted
         self.quantity = quantity # The total volume of the order (MWh)
@@ -28,7 +28,7 @@ class PiecewiseLinearOrder(Order):
 class BlockOrder(Order):
     """These are orders that span one or more periods and have special acceptance conditions."""
     def __init__(self, order_id, bidding_zone, side, price, profile, min_acceptance_ratio=1.0, is_flexible=False, exclusive_group_id=None, parent_block=None):
-        super().__init__(order_id, bidding_zone, side)
+        super().__init__(order_id, bidding_zone, side, None) 
         self.price = price # 1 price limit for the entire block
         self.profile = profile # A dict mapping each period in the block to a specific vol
         self.min_acceptance_ratio = min_acceptance_ratio # min acceptance (1.0 for fill-or-kill)
@@ -44,8 +44,8 @@ class BlockOrder(Order):
 class ComplexOrder(Order):
     """These are sets of orders that are subject to a single, overarching condition."""
     def __init__(self, order_id, bidding_zone, side, sub_orders, fixed_term=0.0, variable_term=0.0, increase_gradient=None, decrease_gradient=None, scheduled_stop_periods=None):
-        super().__init__(order_id, bidding_zone, side)
-        self.sub_orders = sub_orders # Collection of curve sub-orders (e.g., StepOrder objects)
+        super().__init__(order_id, bidding_zone, side, None) 
+        self.sub_orders = sub_orders  # Collection of curve sub-orders (e.g., StepOrder objects)
         # MIC/MP Condition Attributes
         self.fixed_term = fixed_term # Fixed cost/payment component in Euros
         self.variable_term = variable_term # Variable cost/payment component in €/MW per accepted unit
@@ -78,10 +78,8 @@ class MeritOrder(StepOrder):
 
     def __str__(self):
         return f"MeritOrder ID: {self.order_id}, Zone: {self.bidding_zone}, Side: {self.side}, Price: {self.price}, MON: {self.merit_order_number}"
-# 2.7. PUNOrder (Discontinued)
-'''
-used to be for the Italian market, but nnow since Jan 2025 it's dicontinued "Prezzo Unico Nazionale" PUN
-'''
+# 2.7. PUNOrder (discontinued)
+
 # class PUNOrder(MeritOrder):
 #     def __init__(self, order_id, bidding_zone, side, price, quantity, period, merit_order_number):
 #         super().__init__(order_id, bidding_zone, side, price, quantity, period, merit_order_number)
@@ -89,4 +87,4 @@ used to be for the Italian market, but nnow since Jan 2025 it's dicontinued "Pre
 #     def __str__(self):
 #         return f"PUNOrder ID: {self.order_id}, Zone: {self.bidding_zone}, Side: {self.side}, Price: {self.price}, MON: {self.merit_order_number}"
 
-print("Orders loads with no mistakes.") 
+print("Orders loads with no mistakes")

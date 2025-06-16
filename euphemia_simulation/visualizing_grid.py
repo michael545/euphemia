@@ -1,37 +1,32 @@
 import graphviz
 
 def generate_grid_visualization(bidding_zones, interconnectors, output_filename="grid_visualization", output_format="pdf"):
-    """visual graphviz graph of the grid initialized in main.
-
-    Args:
-        bidding_zones (list): A list of bidding zone names.
-        interconnectors (list): A list of dictionaries, where each dictionary
-                                represents an interconnector with keys like
-                                'from_zone', 'to_zone', 'id', 'capacity_mw',
-                                'coupling_model'.
-        output_filename (str): The name of the output file (without extension).
-        output_format (str): The format of the output file (e.g., 'pdf', 'png').
+    """visual graphviz graph of the grid defined in main.
     """
     dot = graphviz.Digraph('ElectricityGrid', comment='European Electricity Grid Model')
     dot.attr(rankdir='LR', size='10,10', overlap='false', splines='true', sep='+15') # Added sep for more spacing
 
     # Add nodes (bidding zones)
-    for zone in bidding_zones:
-        dot.node(zone, zone, shape='ellipse', style='filled', fillcolor='lightblue')
+    for zone_data in bidding_zones: # Iterate through the list of zone dictionaries
+        zone_name = zone_data.get('name') if isinstance(zone_data, dict) else None # Safely get the 'name' attribute
+        if zone_name:
+            dot.node(zone_name, zone_name, shape='ellipse', style='filled', fillcolor='lightblue')
+        else:
+            print(f"Warning: Bidding zone data item {str(zone_data)[:100]} is missing a 'name' key or is not a dictionary. Skipping node creation.")
 
-    # Add edges (interconnectors)
+    # edges (interconnectors)
     for ic in interconnectors:
         from_zone = ic['from_zone']
         to_zone = ic['to_zone']
         
-        # Prepare label
+        # label
         label = f"ID: {ic.get('id', 'N/A')}\n"
         label += f"Capacity: {ic.get('capacity_mw', 'N/A')} MW\n"
         label += f"Model: {ic.get('coupling_model', 'N/A')}"
         if 'voltage_kv' in ic:
             label += f"\nVoltage: {ic.get('voltage_kv')} kV"
 
-        # Customize edge based on coupling model
+        # edge based on coupling model
         color = "black"
         style = "solid"
         penwidth = "1.5"
@@ -59,14 +54,13 @@ def generate_grid_visualization(bidding_zones, interconnectors, output_filename=
 
 if __name__ == "__main__":
 
-    # The main simulation will call generate_grid_visualization directly.
     print("visualizing_grid.py executed directly (for testing/example purposes).")
     print("To generate visualization from the main simulation, run main_sim_entry.py.")
     
-    # print("Running standalone visualization with example data...")
+    # print("standalone visualization with example data...")
     # example_zones = ["TestZone1", "TestZone2"]
     # example_ics = [
     #     {"id": "TZ1-TZ2-01", "from_zone": "TestZone1", "to_zone": "TestZone2", "capacity_mw": 100, "coupling_model": "ATC", "voltage_kv": 400}
     # ]
     # generate_grid_visualization(example_zones, example_ics, output_filename="standalone_test_grid")
-    pass 
+    pass
