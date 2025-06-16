@@ -23,7 +23,7 @@ This repo is designed as a study guide for students trying to understand the EUP
 ## Key Concepts/Definitions
 
 - **Market Coupling (MC):** Eliminates the need to acquire separate transmission capacity rights for cross-border trades. Trades are determined by the MC mechanism.
-- **Economic Surplus (Welfare):** The algorithm maximizes the sum of consumer surplus, producer surplus, and congestion rent across all regions.
+- **Economic Surplus (Welfare):** The algorithm maximizes the sum of consumer surplus, producer surplus, and congestion rent across all coupled regions.
 - **Flow-Based Constraints:** Power flows induced by executed orders (net positions) must not exceed the capacity of the network.
 - **PTDF (Power Transfer Distribution Factor):** Indicates how much net positions (energy exchanges) utilize the capacity of specific network elements.
 - **RAM (Remaining Available Margin):** The available left capacity (in MW) on a network constraint for energy exchanges.
@@ -77,7 +77,7 @@ $$
 \\text{Economic Surplus (Welfare)} = \\text{Consumer Surplus} + \\text{Producer Surplus} + \\text{Congestion Rent}
 $$
 
-This surplus is a result of the executed orders in the market.
+This is a direct result of the executed orders in the market, not the algorithm itsef.
 
 ## Key Acronyms, Terms & Market Specifics
 
@@ -98,3 +98,6 @@ This surplus is a result of the executed orders in the market.
     - REMIT (Regulation on Wholesale Energy Market Integrity and Transparency)
     These regulations are likely to continue shaping the market.
 
+## Refrences & Recommended Reading
+- ** **
+- ** **
