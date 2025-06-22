@@ -50,7 +50,7 @@ This repo is designed as a study guide for students trying to understand the EUP
 For an explanation valuation and modelling  of power swaps and related derivatives like VPPAs, see [swaps_explained.md](./power_derivatives/swaps_explained.md).
 
 - How much vol needs to be hedged, how much vol is pure speculation/counter trading?
-- Are swaps common? Who buys options? Who writes contracts for these swaps(fixed for floating) How liquid are they?
+- Are swaps common? Who buys options? Who writes reugulatroy framework for these instruments (fixed for floating). How liquid are they?
 - Who can market make options?
 - PPAs (Power Purchase Agreements) / VPPAS(virtual Power  Purchase Agreements) renewables/hedging.
 
