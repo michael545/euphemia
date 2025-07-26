@@ -1,8 +1,7 @@
 import graphviz
 
 def generate_grid_visualization(bidding_zones, interconnectors, output_filename="grid_visualization", output_format="pdf"):
-    """visual graphviz graph of the grid defined in main.
-    """
+    
     dot = graphviz.Digraph('ElectricityGrid', comment='European Electricity Grid Model')
     dot.attr(rankdir='LR', size='10,10', overlap='false', splines='true', sep='+15') # Added sep for more spacing
 
@@ -14,7 +13,7 @@ def generate_grid_visualization(bidding_zones, interconnectors, output_filename=
         else:
             print(f"Warning: Bidding zone data item {str(zone_data)[:100]} is missing a 'name' key or is not a dictionary. Skipping node creation.")
 
-    # edges (interconnectors)
+    # edges
     for ic in interconnectors:
         from_zone = ic['from_zone']
         to_zone = ic['to_zone']

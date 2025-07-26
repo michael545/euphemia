@@ -2,7 +2,7 @@ from .base_order import Order
 
 # 2.2. Aggregated Period Orders
 class StepOrder(Order):
-    """Represents a simple limit order."""
+    """limit order."""
     def __init__(self, order_id, bidding_zone, side, price, quantity, period):
         super().__init__(order_id, bidding_zone, side, period)
         self.price = price  # The limit price for the order (€/MWh)
@@ -26,7 +26,7 @@ class PiecewiseLinearOrder(Order):
 
 # 2.3. Block Orders
 class BlockOrder(Order):
-    """These are orders that span one or more periods and have special acceptance conditions."""
+    """ span one or more periods and have special acceptance conditions."""
     def __init__(self, order_id, bidding_zone, side, price, profile, min_acceptance_ratio=1.0, is_flexible=False, exclusive_group_id=None, parent_block=None):
         super().__init__(order_id, bidding_zone, side, None) 
         self.price = price # 1 price limit for the entire block
@@ -62,7 +62,6 @@ class ComplexOrder(Order):
 class ScalableComplexOrder(ComplexOrder):
     """A variation of Complex Orders with slightly different economic conditions."""
     def __init__(self, order_id, bidding_zone, side, sub_orders, fixed_term, min_acceptance_powers, increase_gradient=None, decrease_gradient=None, scheduled_stop_periods=None):
-        # Note: only has fixed_term, not variable_term for its primary economic condition.
         super().__init__(order_id, bidding_zone, side, sub_orders, fixed_term=fixed_term, variable_term=0.0, increase_gradient=increase_gradient, decrease_gradient=decrease_gradient, scheduled_stop_periods=scheduled_stop_periods)
         self.min_acceptance_powers = min_acceptance_powers # Profile of min power per period for activation
 
@@ -78,7 +77,6 @@ class MeritOrder(StepOrder):
 
     def __str__(self):
         return f"MeritOrder ID: {self.order_id}, Zone: {self.bidding_zone}, Side: {self.side}, Price: {self.price}, MON: {self.merit_order_number}"
-# 2.7. PUNOrder (discontinued)
 
 # class PUNOrder(MeritOrder):
 #     def __init__(self, order_id, bidding_zone, side, price, quantity, period, merit_order_number):

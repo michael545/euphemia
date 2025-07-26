@@ -1,5 +1,10 @@
 *.pv
 *.gv
 /euphemia_grid_map
-
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.db
 

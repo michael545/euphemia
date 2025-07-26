@@ -6,8 +6,8 @@ class Grid:
 
     def calculate_ptdf(self, critical_network_elements=None):
         print("Calculating PTDF (placeholder)...")
-        # IDEA: return a dictionary mapping CNEs to PTDF vectors/mats
-        # e.g., {'CNE1': {'ZoneA_export': 0.3, 'ZoneB_export': -0.2, ...}}
+        # IDEA: return a dict mapping CNEs to PTDF vectors/mats
+        # {'CNE1': {'ZoneA_export': 0.3, 'ZoneB_export': -0.2, ...}}
         return {}
 
     def get_ram(self, critical_network_elements=None):
@@ -16,9 +16,6 @@ class Grid:
         return {}
 
     def get_interconnector_capacity(self, from_zone, to_zone):
-        """
-        helper to get total ATC capacity between two zones for a *(Real world capacity can be directional)*.
-        """
         total_capacity = 0
         for ic in self.interconnectors:
             if ic['coupling_model'] == 'ATC':

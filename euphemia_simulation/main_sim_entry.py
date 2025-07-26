@@ -1,4 +1,4 @@
-# Main EUPHEMIA Simulation Runner
+# Main EUPHEMIA SIM RUNNER
 from core.welfare_optimization import MarketClearing
 from core.grid_class import Grid 
 from core.hourly_grid_constraints import HourlyGridConstraints 
@@ -8,7 +8,7 @@ from visualizing_grid import generate_grid_visualization
 
 if __name__ == "__main__":
     print("EUPHEMIA entry running...")
-    # 1. Bidding Zones
+
     bidding_zones = ["SI", "AT", "IT", "HU", "HR"]
     print(f"bidding zones defined: {bidding_zones}")
 
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     print(f"Interconnectors defined: {len(interconnectors)}")
 
     # 2b. Define Zonal Net Position Delta Limits
-    # Example: SI can't change its net position by more than 100MW up or down in any given hour.
+    # Example: SI can't change its net position by 100MW up or down in any given hour.
     #  TSO specs for a give day.
     zone_np_delta_limits = {
         "SI": {"up_profile": [100] * 24, "down_profile": [100] * 24},
@@ -60,9 +60,6 @@ if __name__ == "__main__":
     formatted_bidding_zones = [{'name': zone} for zone in bidding_zones]
     generate_grid_visualization(formatted_bidding_zones, interconnectors, output_filename="euphemia_grid_from_main")
 
-    # 4. Define Orders
-    # Periodic Orders (StepOrder, PiecewiseLinearOrder, MeritOrder)
-    # These are orders that apply to a single period.
     periodic_orders = {}
 
     # H0 Orders
@@ -82,13 +79,13 @@ if __name__ == "__main__":
         StepOrder(order_id="B_IT_001_h1", bidding_zone="IT", side="buy", price=58, quantity=180, period=1),
     ]
     
-    # Period 2 Orders
+    # H2 Orders
     periodic_orders[2] = [
         StepOrder(order_id="S_HU_001_h2", bidding_zone="HU", side="sell", price=46, quantity=-70, period=2),
         StepOrder(order_id="B_HR_001_h2", bidding_zone="HR", side="buy", price=53, quantity=60, period=2),
     ]
 
-    # Block Orders - these are multi-period orders
+    # Block Orders/ multi-period orders
     block_orders = [
         BlockOrder(
             order_id="Block_SI_001_h0-2",
@@ -145,8 +142,7 @@ if __name__ == "__main__":
     market_clearing_algo = MarketClearing(grid, hourly_constraints)
     print("MarketClearing algorithm initialized.")
 
-    # 6. Run the algo (Market Clearing)
-    # The optimize method will need to be updated to handle these new structures
+    # 6. Run the algo/optimizer
     accepted_orders_result, clearing_prices_result, interconnector_flows_result = market_clearing_algo.optimize(
         periodic_orders, block_orders, complex_orders
     )
@@ -162,4 +158,4 @@ if __name__ == "__main__":
         for period, flows in interconnector_flows_result.items():
             print(f"  Period {period}: Interconnector Flows: {flows}")
 
-    print("\\nEUPHEMIA Simulation Example Finished.")
+    print("\\nEUPHEMIA SIM FINISHED.")
