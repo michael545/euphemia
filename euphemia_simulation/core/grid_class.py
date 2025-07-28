@@ -1,4 +1,4 @@
-# Grid SIMulation 
+#THE grid Grid 
 class Grid:
     def __init__(self, bidding_zones, interconnectors):
         self.bidding_zones = bidding_zones  
@@ -11,7 +11,7 @@ class Grid:
         return {}
 
     def get_ram(self, critical_network_elements=None):
-        # a dict mapping CNEs to their RAM values
+        # a dict mapping CNEs to their RAM vals
         # e.g., {'CNE1': 500 MW, 'CNE2': 300 MW}
         return {}
 

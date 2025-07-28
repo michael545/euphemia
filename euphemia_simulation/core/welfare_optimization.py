@@ -5,12 +5,11 @@ class MarketClearing:
     def __init__(self, grid, hourly_constraints):
         self.grid = grid
         self.hourly_constraints = hourly_constraints
-        self.num_periods = 24 # Assuming 24 hourly periods
-
+        self.num_periods = 24 
     def optimize(self, periodic_orders, block_orders, complex_orders):
         """
         Optimizes market clearing for all 24 hourly periods at once.
-        This function builds a single large Mixed-Integer Programming (MIP) problem.
+        builds a single Mixed-Integer Programming (MIP) problem.
 
         Args:
             periodic_orders (dict): {period: [Order objects]} for single-period orders.
@@ -26,7 +25,7 @@ class MarketClearing:
         infinity = solver.infinity()
 
         
-        # For simple step/piecewise orders, we model the accepted quantity as a continuous variable.
+        # For step/piecewise orders,  model the accepted quantity as a continuous variable.
         accepted_periodic_qty = {} 
         for period, orders in periodic_orders.items():
             for order in orders:
@@ -70,7 +69,7 @@ class MarketClearing:
         # Add welfare from block orders
         for order in block_orders:
             for period, quantity in order.profile.items():
-                # The welfare contribution is price * quantity * binary_acceptance_variable
+                # += welfare contribution is price * quantity * binary_acceptance_variable
                 objective.SetCoefficient(accepted_block_vars[order.order_id], order.price * quantity)
 
         # Add welfare from complex orders (and their sub-orders)
@@ -84,18 +83,16 @@ class MarketClearing:
                                                      f"AcceptedSubQty_{sub_order.order_id}")
                 objective.SetCoefficient(accepted_sub_qty_var, sub_order.price)
                 # Link this sub-order's acceptance to the main complex order's binary variable
-                # If complex order is rejected, sub-order accepted qty is 0.
                 solver.Add(accepted_sub_qty_var <= accepted_complex_vars[order.order_id] * (sub_order.quantity if sub_order.side == 'buy' else 1e5)) # Large M for upper bound
                 solver.Add(accepted_sub_qty_var >= accepted_complex_vars[order.order_id] * (sub_order.quantity if sub_order.side == 'sell' else -1e5)) # Large M for lower bound
 
         objective.SetMaximization()
         print("Objective function defined.")
 
-        # --- 4. Add All Constraints for All Periods ---
-        power_balance_constraints = {} # To store for dual value (price) extraction
+        power_balance_constraints = {} # store for dual val. (price) extraction
 
-        # -- Power Balance Constraint (for each zone, for each period) --
-        # Sum of injections (sells) - Sum of withdrawals (buys) = Net Export
+        # -- Power Balance(for each zone, for each period) --
+        # Sum(sells) - Sum of withdrawals (buys) = Net Export
         for zone in self.grid.bidding_zones:
             power_balance_constraints[zone] = {}
             for p in range(self.num_periods):
@@ -137,13 +134,12 @@ class MarketClearing:
                         flow_balance_expr -= interconnector_flow[ic['id']][p]
                 solver.Add(net_position[zone][p] == flow_balance_expr, f"FlowBalance_{zone}_p{p}")
 
-        # -- Interconnector ATC and Ramping Constraints --
+        # -- Interconnector ATC, ramping -
         for ic in self.grid.interconnectors:
             for p in range(self.num_periods):
-                # ATC Constraint
                 capacity = self.hourly_constraints.get_net_available_capacity(ic['id'], p)
                 solver.Add(interconnector_flow[ic['id']][p] <= capacity, f"ATC_Max_{ic['id']}_p{p}")
-                # Assuming symmetric capacity for now. If not, this needs adjustment.
+                # symmetric capacity.this may not reflect real life
                 solver.Add(interconnector_flow[ic['id']][p] >= -capacity, f"ATC_Min_{ic['id']}_p{p}")
 
                 # Ramping Constraint (for periods p > 0)
@@ -162,11 +158,11 @@ class MarketClearing:
                     solver.Add(delta_np_expr <= delta_np, f"NP_DeltaUp_{zone}_p{p}")
                     solver.Add(delta_np_expr >= -delta_down, f"NP_DeltaDown_{zone}_p{p}")
         
-        # -- TODO: Add constraints for advanced orders like MIC, Load Gradient etc.
+        # -- TODO:  constraints for advanced orders like MIC, Load Gradient etc.
         # Example for a MIC on a Complex Order (Simplified - real MIC requires duals)
         # for co in complex_orders:
         #    if hasattr(co, 'fixed_term'):
-        #       # This constraint forces rejection if not profitable enough. Highly complex in reality.
+        #       # forces rejection if not profitable enough. complex in real life.
         #       # Placeholder constraint:
         #       total_revenue_expr = solver.Sum(...) # Sum of sub-order revenues
         #       total_cost_expr = co.fixed_term + solver.Sum(...) # Sum of sub-order costs
@@ -175,12 +171,12 @@ class MarketClearing:
         print(f"Defined {len(solver.constraints())} constraints.")
         print("Starting the solver...")
 
-        # --- (((( 5. solve the model )))---
+        # SOLVER
         status = solver.Solve()
         if status == pywraplp.Solver.OPTIMAL:
             print(f"Optimization successful! Objective value (Total Welfare): {objective.Value():.2f}")
             
-            # --- Prepare results dictionaries ---
+            # results dicts 
             all_accepted_orders = {p: [] for p in range(self.num_periods)}
             all_clearing_prices = {p: {} for p in range(self.num_periods)}
             all_interconnector_flows = {p: {} for p in range(self.num_periods)}
@@ -217,5 +213,5 @@ class MarketClearing:
             return all_accepted_orders, all_clearing_prices, all_interconnector_flows
 
         else:
-            print("Optimization failed or was infeasible.")
+            print("Optimization failed or no solutin possible")
             return {}, {}, {}
