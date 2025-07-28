@@ -7,7 +7,7 @@ from visualizing_grid import generate_grid_visualization
 
 
 if __name__ == "__main__":
-    print("EUPHEMIA entry running...")
+    print("EUPHEMIA running...")
 
     bidding_zones = ["SI", "AT", "IT", "HU", "HR"]
     print(f"bidding zones defined: {bidding_zones}")
@@ -32,11 +32,11 @@ if __name__ == "__main__":
         {"id": "AT-IT-400kv-1", "from_zone": "AT", "to_zone": "IT", "capacity_mw": 700, "coupling_model": "FlowBased", "voltage_kv": 400, "aac_profile": default_aac_profile, "ramping_up_limit_mw_per_hour": 80, "ramping_down_limit_mw_per_hour": 80},
         
         {"id": "AT-HU-400kv-1", "from_zone": "AT", "to_zone": "HU", "capacity_mw": 500, "coupling_model": "ATC", "voltage_kv": 400, "aac_profile": default_aac_profile, "ramping_up_limit_mw_per_hour": default_ramping_up, "ramping_down_limit_mw_per_hour": default_ramping_down},
-        {"id": "IT-HR-DC-1", "from_zone": "IT", "to_zone": "HR", "capacity_mw": 200, "coupling_model": "ATC", "voltage_kv": 10000, "aac_profile": [0]*24, "ramping_up_limit_mw_per_hour": 200, "ramping_down_limit_mw_per_hour": 200}, # DC lines can ramp fast
+        {"id": "IT-HR-DC-1", "from_zone": "IT", "to_zone": "HR", "capacity_mw": 200, "coupling_model": "ATC", "voltage_kv": 10000, "aac_profile": [0]*24, "ramping_up_limit_mw_per_hour": 200, "ramping_down_limit_mw_per_hour": 200}, # DC lines can ramp super fast
     ]
-    print(f"Interconnectors defined: {len(interconnectors)}")
+    print(f"Interconnectors all good: {len(interconnectors)}")
 
-    # 2b. Define Zonal Net Position Delta Limits
+    # 2b. Zonal Net Position Delta Limits
     # Example: SI can't change its net position by 100MW up or down in any given hour.
     #  TSO specs for a give day.
     zone_np_delta_limits = {
@@ -130,7 +130,7 @@ if __name__ == "__main__":
             side="sell",
             sub_orders=scalable_sub_orders_1,
             fixed_term=50, 
-            min_acceptance_powers={0: 10, 1: 15} # min acceptance power profile
+            min_acceptance_powers={0: 10, 1: 15} # min acceptance profile
         )
     ]
     
@@ -142,7 +142,7 @@ if __name__ == "__main__":
     market_clearing_algo = MarketClearing(grid, hourly_constraints)
     print("MarketClearing algorithm initialized.")
 
-    # 6. Run the algo/optimizer
+    # 6. Run the algo
     accepted_orders_result, clearing_prices_result, interconnector_flows_result = market_clearing_algo.optimize(
         periodic_orders, block_orders, complex_orders
     )

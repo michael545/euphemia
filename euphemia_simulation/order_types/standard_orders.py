@@ -84,4 +84,4 @@ class MeritOrder(StepOrder):
 #     def __str__(self):
 #         return f"PUNOrder ID: {self.order_id}, Zone: {self.bidding_zone}, Side: {self.side}, Price: {self.price}, MON: {self.merit_order_number}"
 
-print("Orders loads with no mistakes")
+print("Orders loads")

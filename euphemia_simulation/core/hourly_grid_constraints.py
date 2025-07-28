@@ -71,7 +71,7 @@ class HourlyGridConstraints:
         up_limit_val = ic.get('ramping_up_limit_mw_per_hour', float('inf')) # default to no limit
         down_limit_val = ic.get('ramping_down_limit_mw_per_hour', float('inf')) # default to no limit
 
-        # limits are profiles (lists) or single values
+        # limits are profiles (lists) or single vals
         if isinstance(up_limit_val, list):
             up_limit = up_limit_val[hour_index]
         else:
@@ -91,7 +91,7 @@ class HourlyGridConstraints:
         
         zone_limits_data = self.zone_np_delta_limits.get(zone_id)
         if not zone_limits_data:
-            # no limits for a zone, assume (infinite delta)
+            # no limits(infinite delta)
             return float('inf'), float('inf')
 
         up_limit = zone_limits_data['up_profile'][hour_index]
