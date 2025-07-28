@@ -31,7 +31,7 @@ class BlockOrder(Order):
         self.price = price # 1 price limit for the entire block
         self.profile = profile # A dict mapping each period in the block to a specific vol
         self.min_acceptance_ratio = min_acceptance_ratio # min acceptance (1.0 for fill-or-kill)
-        self.is_flexible = is_flexible # True if the algo chooses the best period (single-period block)
+        self.is_flexible = is_flexible # if the algo chooses best period (single-period block)
         self.exclusive_group_id = exclusive_group_id # for Exclusive Group
         self.parent_block = parent_block # Reference to parent BlockOrder in a Linked Block Orders family
         self.child_blocks = [] # List of child BlockOrder objects
