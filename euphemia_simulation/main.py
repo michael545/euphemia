@@ -1,4 +1,4 @@
-# Main EUPHEMIA SIM RUNNER
+# EUPHEMIA SIM RUNNER
 from core.welfare_optimization import MarketClearing
 from core.grid_class import Grid 
 from core.hourly_grid_constraints import HourlyGridConstraints 

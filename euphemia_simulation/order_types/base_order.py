@@ -1,4 +1,3 @@
-# Base Order Class
 class Order:
     def __init__(self, order_id, bidding_zone, side, period):
         self.order_id = order_id

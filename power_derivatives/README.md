@@ -109,14 +109,14 @@ The electricity derivatives market operates with distinct characteristics compar
 - **Regime-Switching Models:** Structural breaks in power market dynamics
 
 ### Market Microstructure Studies
-- **Order Flow Analysis:** How does order book depth compare to other commodities?
+- **Order Flow Analysis:** How do order book depths compare to other commodities?
 - **Price Discovery Mechanisms:** Efficiency of derivative vs. spot price formation
 - **Cross-Market Arbitrage:** Identification and exploitation of pricing discrepancies
 
 ### Behavioral Finance Applications
-- **Herding Behavior:** Systematic biases in renewable generation forecasting
-- **Sentiment Analysis:** Social media and news impact on energy derivative pricing
-- **Cognitive Biases:** How market participants mis-price tail risks in power markets
+- **Herding Behavior:** systematic biases in renewabless forecasting
+- **Sentiment Analysis:** media and news impact on energy derivative pricing
+- **Cognitive Biases:** How participants mis-price tail risks
 
 ---
 

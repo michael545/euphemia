@@ -1,7 +1,7 @@
 class HourlyGridConstraints:
     def __init__(self, bidding_zones_data, interconnectors_data, zone_np_delta_limits_data):
         """
-        Manages grid limits for a each 1h of the next 24h.
+        Manages grid limits for a 1h of the next 24h.
 
         Args:
             bidding_zones_data (list): List of bidding zone names.

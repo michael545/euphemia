@@ -62,7 +62,7 @@ The current model is linear because:
 
 To make the model quadratic (MIQP):
 
-- **Objective Function**: Introduce quadratic terms, such as penalizing deviations from a target flow or net position.
+- **Objective Function**: Introduce quadratic terms, penalizing deviations from a target flow or net position.
 - **Constraints**: Add quadratic constraints, e.g., for more realistic modeling of network losses or non-linear cost functions.
 
 ---
